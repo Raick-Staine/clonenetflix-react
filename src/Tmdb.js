@@ -1,23 +1,12 @@
 const API_KEY = '6866b1d86eb7c87c9d5bcd71d7a89dc8';
 const API_BASE = 'https://api.themoviedb.org/3';
 
-
-// - Originais da Netflix
-// - Recomendados para você
-// - Em alta
-// - Ação
-// - Comédia
-// - Terror 
-// - Romance
-// - Documentários
-
+// Função para fazer fetch dos dados
 const basicFetch = async (endpoint) => {
-    return await fetch(`${API_BASE}${endpoint}`).then((response) => {
-        return response.json();
-    });
+    return await fetch(`${API_BASE}${endpoint}`).then(response => response.json());
 }
 
-export default {
+const Tmdb = {
     getHomeList: async () => {
         return [
             {
@@ -60,12 +49,12 @@ export default {
                 title: 'Documentários',
                 items: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`),
             }
-        ]
+        ];
     },
 
-    // Pegar os detalhes do filme
     getMovieInfo: async (movieId, type) => {
         let info = {};
+        
         if (movieId) {
             switch (type) {
                 case 'movie':
@@ -81,4 +70,6 @@ export default {
         }
         return info;
     },
-}
+};
+
+export default Tmdb;

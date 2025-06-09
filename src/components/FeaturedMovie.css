@@ -1,9 +1,0 @@
-.fatured {
-    height: 100vh;
-}
-
-.fatured-vertical {
-    width: inherit;
-    height: inherit;
-    background-color: linear-gradient(to top, #111 10%, transparent 90%);
-}
